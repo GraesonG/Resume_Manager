@@ -45,18 +45,39 @@ pip install -e .          # installs deps + the resume_manager package
 (No system libraries needed — PDF rendering uses `fpdf2` and embeds the real
 Times New Roman from `/System/Library/Fonts/Supplemental/`.)
 
-### 2. Google setup (service account)
+### 2. Google setup (two credentials, by necessity)
 
-1. In Google Cloud Console (signed in as the account that owns the Drive folder
-   + Sheet), create a project and enable the **Google Sheets API** and
-   **Google Drive API**.
-2. Create a **service account**, then create a **JSON key** and download it.
-3. Save the key to: `~/Documents/GitHub/Resume-Builder/service-account.json`
-   (git-ignored — never commit it).
-4. **Share** both the tracker Sheet and the "2026" Drive folder with the service
-   account's email (Editor).
+Sheets and Drive use **different** auth. A service account can edit the
+user-owned tracker Sheet, but it **cannot** own files in a personal (My Drive)
+folder — Google rejects the upload with *"Service Accounts do not have storage
+quota."* So Drive uploads use **OAuth user credentials** (the PDF is owned by
+you), while Sheets stays on the **service account**.
 
-Run `google_status` to confirm the key is found.
+All credential files live in `~/Documents/GitHub/Resume-Builder/` (outside this
+repo) and are git-ignored.
+
+In Google Cloud Console (signed in as the account that owns the Drive folder +
+Sheet), create a project and enable the **Google Sheets API** and **Google
+Drive API**, then:
+
+**a) Service account — for the tracker Sheet**
+1. Create a **service account**, add a **JSON key**, download it.
+2. Save it to `~/Documents/GitHub/Resume-Builder/service-account.json`.
+3. **Share the tracker Sheet** with the service-account email (Editor).
+
+**b) OAuth client — for Drive uploads**
+4. Configure the **OAuth consent screen** (External) and **publish** it to
+   production. Only the non-sensitive `drive.file` scope is used, so no Google
+   verification is required.
+5. Create an **OAuth client ID** of type **Desktop app**, download the JSON, and
+   save it to `~/Documents/GitHub/Resume-Builder/oauth_client.json`.
+6. Run the one-time sign-in (opens a browser, saves a reusable token):
+
+   ```bash
+   python -m resume_manager.authorize
+   ```
+
+Run `google_status` to confirm both `sheets_ready` and `drive_ready` are true.
 
 ### 3. Register the MCP with Claude
 
@@ -77,4 +98,6 @@ vars (`RESUME_SERVICE_ACCOUNT`, `RESUME_DRIVE_FOLDER_ID`,
 
 ## Security
 
-`service-account.json` and `.env` are git-ignored. Never commit credentials.
+`service-account.json`, `oauth_client.json`, `token.json`, and `.env` are
+git-ignored (and live outside the repo, in `Resume-Builder/`). Never commit
+credentials.

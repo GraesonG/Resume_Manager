@@ -1,0 +1,118 @@
+{
+  "_note": "Source of truth for resume generation. Experience is NEVER invented. Titles, dates, and wording confirmed by Graeson and cross-checked against his real 2023 resume (Resume-Gehringer-2023-1.pdf).",
+  "_unresolved": [],
+  "_conventions": {
+    "contact_line": "City + State only on the resume (no street address / zip).",
+    "employment_gap": "GM Lead ended Oct 2023 when GM closed the building/role; personal time + a few months of job searching before Gibson (Oct 2024). Reason is context only — do NOT print it on any resume; just present the dates.",
+    "summary": "Base template has no summary/objective section; go straight into Experience.",
+    "skills_format": "Single comma-separated line, not grouped categories (matches real resume)."
+  },
+  "contact": {
+    "name": "Graeson Gehringer",
+    "city": "Chandler, AZ",
+    "phone": "(814) 380-0296",
+    "email": "graeson.gehringer@gmail.com"
+  },
+  "education": [
+    {
+      "school": "Penn State University",
+      "degree": "B.S.",
+      "detail": "Information Sciences and Technology: Design and Development",
+      "location": "State College, PA",
+      "dates": "May 2011 - Dec 2015"
+    }
+  ],
+  "experience": [
+    {
+      "id": "gm_partlink",
+      "company": "General Motors",
+      "title": "Software Engineer",
+      "location": "Chandler, AZ",
+      "dates": "Jan 2016 - Aug 2019",
+      "application": "PartLink",
+      "notes": [
+        "Front-end (HTML/JavaScript) and back-end (Java) development for PartLink.",
+        "Fixed UI bugs and Java back-end bugs; implemented new front-end and Java features.",
+        "Identified SQL issues/needs and coordinated database updates with the dedicated SQL/database team (SQL knowledge scoped to understanding Java's needs and coordinating changes).",
+        "Communicated across the database team, Project Manager, QA team, and manager.",
+        "Maintained and enhanced legacy web applications; onboarded and trained new developers; owned the process to update and deploy the application."
+      ],
+      "data_relevance": "SQL needs analysis and coordination with the database team."
+    },
+    {
+      "id": "gm_techline_qa",
+      "company": "General Motors",
+      "title": "Quality Assurance Analyst on Techline Connect",
+      "location": "Chandler, AZ",
+      "dates": "Aug 2019 - Mar 2021",
+      "application": "TechlineConnect",
+      "notes": [
+        "Wrote and executed functional test cases; ran regression tests.",
+        "Helped build the automation test suite as both an automation developer (Cactus) and the QA knowledge expert for the app.",
+        "First major project: overhauled the team's regression suite (originally 1,500 test cases) — removed duplicate, outdated, and non-viable tests, added cases needed for coverage, and rewrote all with clear steps.",
+        "Conducted defect triages; proficient in defect lifecycle management.",
+        "Created documentation used by the team to share existing and new information.",
+        "TechlineConnect is a vehicle service suite used by 90,000 technicians across 7,000 dealer locations worldwide."
+      ]
+    },
+    {
+      "id": "gm_techline_lead",
+      "company": "General Motors",
+      "title": "Lead Quality Assurance Analyst on Techline Connect",
+      "location": "Chandler, AZ",
+      "dates": "Mar 2021 - Oct 2023",
+      "application": "TechlineConnect",
+      "notes": [
+        "Promoted to QA Lead for TechlineConnect (team of ~5); owned test case build-out, business-knowledge comprehension, test execution, and management of test resources.",
+        "Trained and assisted new team members across the entire project team.",
+        "Identified risks to the project and testing timeline and provided solutions to minimize risk.",
+        "Worked closely with business partners and developers across time zones to identify requirements and complete gap analysis.",
+        "Participated in backlog grooming and sprint planning; created and shared daily test status reports; coordinated bug review multiple times per week; reported to the Project Manager.",
+        "Led the project team's transition from Waterfall to Agile.",
+        "Created an internal utility to estimate testing timelines and allocate resources, adjustable by delivery date and project scope."
+      ]
+    },
+    {
+      "id": "gibson",
+      "company": "Gibson Consulting",
+      "title": "Software Quality Engineer",
+      "location": "Remote",
+      "dates": "Oct 2024 - May 2026",
+      "company_context": "Supply chain consulting firm improving its Data Tools team.",
+      "notes": [
+        "First and only QA at the firm; also brought Project Management experience and coordination to the team.",
+        "Introduced and ran task coordination in Azure DevOps; ran the daily standup.",
+        "Used AI as a software-development tool: created unit tests, built MCPs (minimal focus), built a unit test suite for a Next.js app.",
+        "Built Databricks workbooks focused on data evaluation (Great Expectations-style validation for Python applications) and documentation creation."
+      ],
+      "data_relevance": "HIGH — Databricks data evaluation, data-quality validation, documentation."
+    }
+  ],
+  "skills": {
+    "qa_testing": ["Functional test cases", "Test execution", "Regression testing", "Test automation (Cactus, Sikuli)", "Defect lifecycle / triage", "Test suite optimization", "QA leadership"],
+    "data": ["SQL (Oracle SQL Developer)", "Databricks", "Data evaluation / data quality (Great Expectations-style)", "Dashboards / Power BI (limited, last used 2019)"],
+    "programming": ["Java", "JavaScript", "HTML", "Python"],
+    "tools_process": ["Azure DevOps", "Jenkins", "Microsoft Office", "Agile & Waterfall", "Claude (Desktop/Code)", "ChatGPT (minimal)"],
+    "resume_line_2023": "Agile and Waterfall Project Life Cycles, Azure DevOps, Cactus, Sikuli, Microsoft Office, Oracle SQL Developer, Java, Communication, Time Management, Cross-Organization Collaboration, Detail-Oriented"
+  },
+  "phrasing_bank": [
+    "Integrated business knowledge into test case development and execution",
+    "Worked closely with business partners and developers in various time zones to identify requirements and complete gap analysis",
+    "Created an internal utility to estimate testing timelines and allocate resources with the ability to adjust based on delivery dates and project scope",
+    "Optimized our testing processes and timeline by creating new test suites without losing scope",
+    "Worked with the Test Automation team in writing and improving the Automation code base",
+    "Conducted defect triages and provided knowledge in defect lifecycle management"
+  ],
+  "versions": {
+    "software_qa": {
+      "label": "Software QA / Quality Analyst",
+      "emphasis": "QA leadership, test design/execution, automation, regression optimization, defect lifecycle, cross-functional coordination.",
+      "primary_roles": ["gm_techline_lead", "gm_techline_qa", "gibson"]
+    },
+    "data_analyst": {
+      "label": "Data Analyst",
+      "emphasis": "Gibson Databricks data evaluation/quality as the anchor; GM SQL coordination and data-needs analysis as supporting experience. Power BI mentioned but de-emphasized (low confidence).",
+      "primary_roles": ["gibson", "gm_partlink", "gm_techline_qa"]
+    }
+  }
+}

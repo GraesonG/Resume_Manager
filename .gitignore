@@ -1,0 +1,22 @@
+# Secrets — NEVER commit
+service-account.json
+*.key.json
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Generated output
+output/
+*.pdf
+!docs/**/*.pdf
+
+# OS
+.DS_Store

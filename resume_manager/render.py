@@ -14,12 +14,17 @@ bullets; this module only lays them out.
 
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 
 from fpdf import FPDF
 from fpdf.enums import XPos, YPos
 
 from . import config
+
+# fpdf2 subsets embedded fonts via fontTools, which logs verbosely at INFO.
+# Quiet it so the MCP's stderr stays readable.
+logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 PT = 25.4 / 72  # points -> mm
 BODY_H = config.BODY_PT * PT * 1.12  # single line height with light leading

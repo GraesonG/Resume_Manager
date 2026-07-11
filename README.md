@@ -39,7 +39,7 @@ brew install python@3.11
 cd ~/Documents/GitHub/Resume_Manager
 python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e .          # installs deps + the resume_manager package
 ```
 
 (No system libraries needed — PDF rendering uses `fpdf2` and embeds the real
@@ -61,7 +61,7 @@ Run `google_status` to confirm the key is found.
 ### 3. Register the MCP with Claude
 
 ```bash
-claude mcp add resume-manager -- ~/Documents/GitHub/Resume_Manager/.venv/bin/python -m resume_manager
+claude mcp add resume-manager -- ~/Documents/GitHub/Resume_Manager/.venv/bin/resume-manager
 ```
 
 ## Default formatting

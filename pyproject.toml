@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resume_manager"
+version = "0.1.0"
+description = "MCP server that tailors a 1–1.5 page PDF resume to a job description, ATS-checks it, and files it to Google Drive + a tracker Sheet."
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.2.0",
+    "google-api-python-client",
+    "google-auth",
+    "gspread>=6.0.0",
+    "fpdf2>=2.7.8",
+]
+
+[project.scripts]
+resume-manager = "resume_manager.server:main"
+
+[tool.setuptools]
+packages = ["resume_manager"]

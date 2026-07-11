@@ -1,5 +1,8 @@
 # Secrets — NEVER commit
 service-account.json
+oauth_client.json
+client_secret*.json
+token.json
 *.key.json
 .env
 

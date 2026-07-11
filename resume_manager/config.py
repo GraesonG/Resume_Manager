@@ -30,6 +30,19 @@ SERVICE_ACCOUNT_PATH = Path(
         RESUME_BUILDER_DIR / "service-account.json",
     )
 )
+# Drive uploads use OAuth *user* credentials (files owned by the user) because
+# a service account has no personal-Drive storage quota. Sheets stays on the
+# service account (editing a user-owned Sheet consumes no SA quota).
+OAUTH_CLIENT_PATH = Path(
+    os.environ.get("RESUME_OAUTH_CLIENT", RESUME_BUILDER_DIR / "oauth_client.json")
+)
+OAUTH_TOKEN_PATH = Path(
+    os.environ.get("RESUME_OAUTH_TOKEN", RESUME_BUILDER_DIR / "token.json")
+)
+# Non-sensitive scope: the app can only manage files it creates. Enough to
+# upload resume PDFs into the shared "2026" folder.
+DRIVE_OAUTH_SCOPES = ["https://www.googleapis.com/auth/drive.file"]
+SHEETS_SA_SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 # "2026" output folder + application tracker sheet (from the project spec).
 DRIVE_FOLDER_ID = os.environ.get("RESUME_DRIVE_FOLDER_ID", "1EE5OQ7DGx7kPKf6rAtYpVI3KDdr2Tp4s")
 TRACKER_SHEET_ID = os.environ.get(
